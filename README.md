@@ -25,7 +25,9 @@ void loop() {
   last_button_state = button_state;
   button_state = digitalRead(button_pin);
 
-  if(last_button_state == LOW && button_state == HIGH) {
+  // Check when the button is released
+  if(last_button_state == HIGH && button_state == LOW) {
+    // switch the state of the led pin
     if (led_state == 0) {
       digitalWrite(led_pin, HIGH);
       led_state = 1;
@@ -38,7 +40,7 @@ void loop() {
 }
 ```
 
-While functional, this code is somewhat verbose and requires manual management of both button and LED states. Utilizing the Abstract Component Library simplifies the code, providing a clearer and more concise solution, with the library managing state transitions.
+While functional, this code is somewhat verbose and requires manual management of both button and LED states, besides requiring several comments in order to be readable. Utilizing the Abstract Component Library simplifies the code, providing a clearer and more concise solution, with the library managing state transitions.
 
 ```cpp
 #include <Components.h>
