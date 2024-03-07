@@ -18,7 +18,7 @@ void Led::off() {
     _on = false;
 }
 
-void Led::alternate() {
+void Led::toggle() {
     if (_on) {
         off();
     } else {

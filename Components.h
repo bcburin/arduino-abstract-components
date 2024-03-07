@@ -9,7 +9,7 @@ class Led {
     void setup();
     void on();
     void off();
-    void alternate();
+    void toggle();
 
    private:
     int _pin;
