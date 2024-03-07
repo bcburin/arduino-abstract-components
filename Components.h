@@ -29,7 +29,7 @@ class Button {
    private:
     int _pin;
     int _state;
-    int _oldState;
+    int _prev_state;
 };
 
 #endif  // COMPONENTS_H
