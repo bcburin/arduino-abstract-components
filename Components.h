@@ -35,4 +35,21 @@ private:
     int _prev_state;
 };
 
+class AnalogReader {
+public:
+    AnalogReader(int pin, int tol = 5);
+    void setup();
+    void update();
+    bool increased();
+    bool decreased();
+    bool changed();
+    int read();
+
+private:
+    int _pin;
+    int _read;
+    int _prev_read;
+    int _tolerance;
+};
+
 #endif  // COMPONENTS_H

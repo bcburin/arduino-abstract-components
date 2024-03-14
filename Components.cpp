@@ -52,3 +52,23 @@ bool Button::was_released() { return _prev_state == HIGH && _state == LOW; }
 bool Button::was_pressed_or_released() {
     return was_pressed() || was_released();
 }
+
+
+// AnalogReader class
+
+AnalogReader::AnalogReader(int pin, int tol) : _pin(pin), _tolerance(tol) {}
+
+void AnalogReader::setup() { pinMode(_pin, INPUT); }
+
+void AnalogReader::update() {
+    _prev_read = _read;
+    _read = analogRead(_pin);
+}
+
+bool AnalogReader::increased() { return _read > (_prev_read + _tolerance); }
+
+bool AnalogReader::decreased() { return _read < (_prev_read - _tolerance); }
+
+bool AnalogReader::changed() { return increased() || decreased(); }
+
+int AnalogReader::read() { return _read; }
