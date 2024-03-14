@@ -21,9 +21,15 @@ void Led::off() {
 void Led::toggle() {
     if (_on) {
         off();
-    } else {
+    }
+    else {
         on();
     }
+}
+
+void Led::write(int val) {
+    analogWrite(_pin, val);
+    _on = (val > ANALOG_WRITE_THRESHOLD);
 }
 
 // Button Class
