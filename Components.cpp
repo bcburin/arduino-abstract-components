@@ -72,3 +72,16 @@ bool AnalogReader::decreased() { return _read < (_prev_read - _tolerance); }
 bool AnalogReader::changed() { return increased() || decreased(); }
 
 int AnalogReader::read() { return _read; }
+
+
+// AnalogWriter class
+
+AnalogWriter::AnalogWriter(int pin, int max_val) : _pin(pin), _ratio(1024.0 / max_val) {}
+
+void AnalogWriter::setup() {
+    pinMode(_pin, OUTPUT);
+}
+
+void AnalogWriter::write(int val) {
+    analogWrite(_pin, val / _ratio);
+}

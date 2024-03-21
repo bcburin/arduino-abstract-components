@@ -52,4 +52,14 @@ private:
     int _tolerance;
 };
 
+class AnalogWriter {
+public:
+    AnalogWriter(int pin, int max_val = 256);
+    void setup();
+    void write(int val);
+private:
+    int _pin;
+    double _ratio;
+};
+
 #endif  // COMPONENTS_H
