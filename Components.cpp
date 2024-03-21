@@ -78,10 +78,10 @@ int AnalogReader::read() { return _read; }
 
 AnalogWriter::AnalogWriter(int pin, int max_val) : _pin(pin), _ratio(1024.0 / max_val) {}
 
-void AnalogWriter::setup() {
-    pinMode(_pin, OUTPUT);
-}
+void AnalogWriter::setup() { pinMode(_pin, OUTPUT); }
 
-void AnalogWriter::write(int val) {
-    analogWrite(_pin, val / _ratio);
-}
+void AnalogWriter::on() { write(1024); }
+
+void AnalogWriter::off() { write(0); }
+
+void AnalogWriter::write(int val) { analogWrite(_pin, val / _ratio); }
